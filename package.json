@@ -60,25 +60,7 @@
   "jest": {
     "verbose": true
   },
-  "keywords": [
-    "multipart",
-    "form",
-    "data",
-    "querystring",
-    "www",
-    "json",
-    "ulpoad",
-    "file"
-  ],
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "lint-staged": {
-    "!*.{js,jsx,ts,tsx}": [
-      "yarn run fmt:prepare"
-    ],
     "*.{js,jsx,ts,tsx}": [
       "yarn run lint"
     ]
