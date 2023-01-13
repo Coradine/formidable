@@ -1,5 +1,5 @@
 {
-  "name": "formidable",
+  "name": "@coradine/formidable",
   "version": "3.2.5",
   "license": "UNLICENSED",
   "description": "fork of formidable",
