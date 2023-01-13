@@ -61,21 +61,7 @@
   "jest": {
     "verbose": true
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "git status --porcelain && yarn lint-staged",
-      "commit-msg": "yarn commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "lint-staged": {
-    "!*.{js,jsx,ts,tsx}": [
-      "yarn run fmt:prepare"
-    ],
     "*.{js,jsx,ts,tsx}": [
       "yarn run lint"
     ]
