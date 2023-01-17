@@ -1,6 +1,7 @@
 {
   "name": "@coradine/formidable",
   "version": "2.1.0",
+  "author": "Coradine Aviation Systems",
   "license": "UNLICENSED",
   "description": "fork of formidable",
   "homepage": "https://github.com/Coradine/formidable",
