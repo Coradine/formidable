@@ -13,7 +13,6 @@ const file = new PersistentFile({
   mimetype: 'image/png',
 });
 
-
 jest.mock('fs', () => {
   const fs = jest.requireActual('fs');
   return {

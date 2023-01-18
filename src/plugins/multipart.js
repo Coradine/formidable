@@ -8,6 +8,26 @@ const errors = require('../FormidableError.js');
 
 const { FormidableError } = errors;
 
+const mimeTypes = new Map(
+  Object.entries({
+    zip: 'application/zip',
+    pdf: 'application/pdf',
+    xml: 'application/xml',
+    json: 'application/json',
+    gz: 'application/gzip',
+    bin: 'application/octet-stream',
+    txt: 'text/plain',
+    csv: 'text/csv',
+    htm: 'text/html',
+    html: 'text/html',
+    png: 'image/png',
+    jpeg: 'image/jpeg',
+    jpg: 'image/jpeg',
+    gif: 'image/gif',
+  }),
+);
+
+export const multipartType = 'multipart';
 // the `options` is also available through the `options` / `formidable.options`
 module.exports = function plugin(formidable, options) {
   // the `this` context is always formidable, as the first argument of a plugin
@@ -94,12 +114,17 @@ function createInitMultipart(boundary) {
         headerField = '';
         headerValue = '';
       } else if (name === 'headersEnd') {
-        // if filename exists but mimetype is undetermined, 
+        // if filename exists but mimetype is undetermined,
         // use file-extension to determine the mimetype
-        // works for zip, pdf, json
         if (!part.mimetype && typeof part.originalFilename === 'string') {
           const extension = part.originalFilename.split('.').slice(-1)[0];
-          part.mimetype = `application/${extension}`;
+          part.mimetype = mimeTypes.get(extension);
+          if (!part.mimetype) {
+            console.warn(
+              `MIME Type not found for file: ${part.originalFilename}. Defaulting to application/octet-stream`,
+            );
+            part.mimetype = 'application/octet-stream';
+          }
         }
         switch (part.transferEncoding) {
           case 'binary':
