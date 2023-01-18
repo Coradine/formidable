@@ -9,7 +9,6 @@
     "type": "git",
     "url": "git+https://github.com/Coradine/formidable.git"
   },
-  "type": "module",
   "main": "./src/index.js",
   "files": [
     "src"
