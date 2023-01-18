@@ -27,7 +27,6 @@ const mimeTypes = new Map(
   }),
 );
 
-export const multipartType = 'multipart';
 // the `options` is also available through the `options` / `formidable.options`
 module.exports = function plugin(formidable, options) {
   // the `this` context is always formidable, as the first argument of a plugin
